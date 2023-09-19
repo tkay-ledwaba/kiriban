@@ -48,6 +48,10 @@ Route::middleware('auth')->group(
 
         })->name('projects');
 
+        Route::get('diary', function(){
+            return view('diary');
+        })->name('diary');
+
         Route::get('team', function(){
             return view('team');
         })->name('team');

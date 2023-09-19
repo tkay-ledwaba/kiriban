@@ -99,7 +99,6 @@ img {
 
 <body>
     <div class="sidebar">
-        <br>
         <img src="/images/kirivan_logo.png" class="logo">
 
         <div class="profile-card">
@@ -110,26 +109,13 @@ img {
             <div class="email">{{auth()->user()->email}}</div>
         </div>
         <a href="/dashboard">Dashboard</a>
-        <a class="active" href="/projects">Projects</a>
-        <a href="/diary">Diary</a>
+        <a href="/projects">Projects</a>
+        <a class="active" href="/diary">Diary</a>
 
       </div>
 
       <div class="content">
-        <h2>Projects</h2>
-        @if(!empty($projects))
-        @foreach ($projects as $project)
-        <div class="card">
-            <div class="container">
-                <h4><b>{{$project->name}}</b></h4>
-
-                <label for="file">8 Tasks:</p>
-                <progress id="file" value="32" max="100"> 40% </progress>
-            </div>
-          </div>
-        </div>
-        @endforeach
-        @endif
-
+        <h2>Diary</h2>
+      </div>
 </body>
 </html>
