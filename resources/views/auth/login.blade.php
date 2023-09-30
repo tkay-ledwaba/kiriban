@@ -8,7 +8,9 @@
 </head>
 <body>
   <div class="signin-container">
+    <br>
     <img src="/images/kirivan_logo.png" class="logo">
+    <br>
 
     <form action="{{route('loginUser')}}" method="POST">
 
@@ -40,7 +42,7 @@
         <br>
         <button class="login-button" type="submit">
             <span class="button-sticker">🔑</span>
-            Login
+            LOGIN
         </button>
 
         <div class="login-actions">

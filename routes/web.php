@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProjectsController;
+
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\DB;
@@ -37,15 +39,15 @@ Route::middleware('auth')->group(
         Route::get('dashboard', function(){
             $projects = DB::table('projects')->get();
             return view("dashboard", ["projects" => $projects]);
-
-
         })->name('dashboard');
 
         Route::get('projects', function(){
-
             $projects = DB::table('projects')->get();
-            return view("projects", ["projects" => $projects]);
-
+            $tasks = DB::table('tasks')->get();
+            return view("projects", [
+                "projects" => $projects,
+                "tasks" => $tasks
+            ]);
         })->name('projects');
 
         Route::get('diary', function(){
@@ -55,7 +57,27 @@ Route::middleware('auth')->group(
         Route::get('team', function(){
             return view('team');
         })->name('team');
+    }
+);
 
+Route::controller(ProjectsController::class)->group(
+    function(){
+
+        Route::post('addProject',  [ProjectsController::class, 'addProject'])->name('addProject');
+
+        Route::get('projects/{id}/addtask/', function(){
+
+
+        })->name('tasks');
+
+        Route::get('projects/{id}/tasks/', function(){
+            $projects = DB::table('projects')->get();
+            $project = DB::table('projects')->find('id');
+            return view("tasks.tasks", ["projects" => $projects]);
+        })->name('tasks');
 
     }
 );
+
+
+

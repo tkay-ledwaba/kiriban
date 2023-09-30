@@ -92,12 +92,6 @@ body {
   color: #f1f1f1;
 }
 
-.profile-card {
-            text-align: center;
-            margin: 16px;
-        }
-
-
 .main {
   margin-left: 160px; /* Same as the width of the sidenav */
   padding: 0px 00px;
@@ -287,15 +281,8 @@ and (max-width: 600px) {
 
     <div class="sidebar">
         <img src="/images/kirivan_logo.png" class="logo">
-
-        <div class="profile-card">
-            <div class="profile-icon-label">
-                <i class="fas fa-user-circle"></i>
-            </div>
-            <div class="username">{{auth()->user()-> first_name}} {{auth()->user()-> last_name}}</div>
-            <div class="email">{{auth()->user()->email}}</div>
-        </div>
-
+        <h2>{{auth()->user()-> first_name}} {{auth()->user()-> last_name}}</h2>
+        <h1>{{auth()->user()-> email}}</h1>
         <a href="/dashboard"><i class="fa fa-fw fa-home"></i> Dashboard</a>
         <a href="/projects"><i class="fa fa-fw fa-wrench"></i> Projects</a>
         <a href="/diary"><i class="fa fa-fw fa-book"></i> Diary</a>
@@ -305,7 +292,7 @@ and (max-width: 600px) {
     <div class="main">
 
         <div class="topnav">
-            <a class="active" href="#home">Team</a>
+            <a class="active" href="#home">Dashboard</a>
             <div class="search-container">
                 <form action="/action_page.php">
                     <input type="text" placeholder="Search..." name="search">
@@ -393,6 +380,6 @@ and (max-width: 600px) {
         modal.style.display = "none";
       }
     }
-    </script>
+</script>
 
 </html>

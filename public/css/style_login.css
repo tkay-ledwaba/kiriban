@@ -12,7 +12,7 @@ body {
 
 /* Enhanced Styles */
 .signin-container {
-    background-color: #ffffff;
+    background-color: #E8A452;
     border-radius: 10px;
     padding-bottom: 20px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
@@ -63,7 +63,7 @@ body {
 
 /* Login button */
 .login-button{
-    background-color: #E8A452;
+    background-color: #000000;
     width: 290px;
     height: 35px;
     border: none;
