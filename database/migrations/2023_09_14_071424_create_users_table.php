@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('uid')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('image')->default('user.png');;
+            $table->string('image')->nullable();;
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
@@ -32,6 +32,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-    
+
     }
 };

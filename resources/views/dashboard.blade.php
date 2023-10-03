@@ -167,6 +167,78 @@
         cursor: pointer;
     }
 
+    /* Project Name wire:input field */
+#name{
+    width: 97%;
+    height: 30px;
+    border: solid;
+    border-color: #E8A452;
+    border-width: 1px;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Overview :input field */
+#overview{
+    width: 97%;
+    height: 30px;
+    border: solid;
+    border-color: #E8A452;
+    border-width: 1px;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* Objectives :input field */
+#objectives{
+    width: 97%;
+    height: 30px;
+    border: solid;
+    border-color: #E8A452;
+    border-width: 1px;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Due Date :input field */
+#date{
+    width: 97%;
+    height: 30px;
+    border: solid;
+    border-color: #E8A452;
+    border-width: 1px;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Goals :input field */
+#goals{
+    width: 97%;
+    height: 30px;
+    border: solid;
+    border-color: #E8A452;
+    border-width: 1px;
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Login button */
+.add-button{
+    background-color: #E8A452;
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+    color: #FFFFFF;
+}
+
     /* Add Animation */
     @-webkit-keyframes animatetop {
         from {top:-300px; opacity:0}
@@ -205,8 +277,10 @@
 
         <div class="profile-card">
             <div class="profile-icon-label">
+
                 <i class="fa fa-user-circle"></i>
             </div>
+
             <div class="username"><b>{{auth()->user()-> first_name}} {{auth()->user()-> last_name}}</b></div>
             <div class="email">{{auth()->user()->email}}</div>
         </div>
@@ -231,8 +305,9 @@
                     </div>
                     <br>
                 </div>
-                <a href="/projects/$project">Learn More</a>
+                <a href="/projects/$project">View Details</a>
             </div>
+            <br>
         @endforeach
 
         <!-- Trigger/Open The Modal -->
@@ -250,39 +325,47 @@
 
                 <div class="modal-body">
                     <form action="{{route('addProject')}}" method="POST">
+
+                        @if($errors->any())
+                        <div class>
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">{{$error}}</div>
+                            @endforeach
+                        </div>
+                        @endif
+
+                        @if(session()->has('error'))
+                            <div class="alert alert-danger">{{session('error')}}</div>
+                        @endif
+
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">{{session('success')}}</div>
+                        @endif
+
                         @csrf
+
                         <br>
 
                         <div class="input-group">
-                            <input type="name" id="name" name="name" required placeholder="Project Name">
+                            <input type="name" id="name" name="name" required placeholder="Project Name"><br><br>
+                            <input type="overview" id="overview" name="overview" required placeholder="Overview"><br><br>
+                            <input type="objectives" id="objectives" name="objectives" required placeholder="Objectives"><br><br>
+                            <input type="date" id="date" name="date" required placeholder="Due Date"><br><br>
+                            <input type="goals" id="goals" name="goals" required placeholder="Goals"><br><br>
+                            <input type="hidden" id="owner" name="owner" value="{{auth()->user()->first_name}} {{auth()->user()->last_name}}"><br><br>
+                            <input type="hidden" id="uid" name="uid" value="{{auth()->user()->uid}}">
+                            <button class="add-button" type="submit">ADD PROJECT</button>
                         </div>
-                        <br>
 
-                        <div class="input-group">
-                            <input type="overview" id="overview" name="overview" required placeholder="Overview">
-                        </div>
-                        <br>
 
-                        <div class="input-group">
-                            <input type="objectives" id="objectives" name="objectives" required placeholder="Objectives">
-                        </div>
-                        <br>
 
-                        <div class="input-group">
-                            <input type="due-date" id="due-date" name="due-date" required placeholder="Due Date">
-                        </div>
-                        <br>
-
-                        <div class="input-group">
-                            <input type="goals" id="goals" name="goals" required placeholder="Goals">
-                        </div>
-                        <br>
-
-                        <button class="add-button" type="submit">Add Project</button>
-                        <br>
                     </form>
                 </div>
-            </div>
+
+                <br>
+                <div class="modal-footer">
+
+                </div>
         </div>
     </div>
 </body>

@@ -37,10 +37,6 @@
     <div class="content">
         <h2>Projects</h2>
 
-        <a href="/project" class="add-button">Add Project</a>
-
-        <br><br>
-
         @foreach ($projects as $project)
             <div class="card">
                 <div class="header">
@@ -78,6 +74,7 @@
                     @endif
                 </div>
             </div>
+            <br>
         @endforeach
     </div>
 </body>

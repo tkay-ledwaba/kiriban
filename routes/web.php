@@ -63,6 +63,11 @@ Route::middleware('auth')->group(
 Route::controller(ProjectsController::class)->group(
     function(){
 
+        Route::get('project', function(){
+
+            return view('project');
+        })->name('projects.project');
+
         Route::post('addProject',  [ProjectsController::class, 'addProject'])->name('addProject');
 
         Route::get('projects/{id}/addtask/', function(){

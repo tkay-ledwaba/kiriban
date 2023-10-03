@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use App\Models\Task;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -53,7 +53,14 @@ class ProjectsController extends Controller
 
     public function tasks(Request $request ){
 
-        $project_id = $request->route('id');
+          // Get the selected project ID from the request
+          $projectId = $request->input('projectId');
+
+          // Get the tasks for the selected project
+          $tasks = Task::whereHas('project', function ($query) use ($projectId) {
+              $query->where('id', $projectId);
+          })->get();
+
 
         return view("tasks.task");
     }
